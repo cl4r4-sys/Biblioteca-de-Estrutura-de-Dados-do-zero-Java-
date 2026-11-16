@@ -6,16 +6,28 @@ public class LinkedList {
     private Node tail;
     private int size;
 
+    /**
+     * Construtor da classe LinkedList.
+     * Inicializa a lista como vazia e o head e o tail como nulos.
+     */
     public LinkedList() {
         this.head = null;
         this.tail = null;
         this.size = 0;
     }
 
+    /**
+     * Verifica se a lista está vazia.
+     * @return true caso esteja, false caso contrário.
+     */
     public boolean isEmpty() {
         return (this.size == 0);
     }
 
+    /**
+     * Adiciona um elemento no início da lista.
+     * @param v -> valor a ser adicionado.
+     */
     public void addFirst(int v) {
         Node aux = new Node(v);
         
@@ -31,6 +43,10 @@ public class LinkedList {
         this.size++;
     }
 
+    /**
+     * Adiciona um elemento no final da lista.
+     * @param v -> valor a ser adicionado.
+     */
     public void addLast(int v) {
         Node aux = new Node(v);
         
@@ -46,6 +62,12 @@ public class LinkedList {
         this.size++;
     }
 
+    /**
+     * Adiciona um elemento em um índice específico da lista.
+     * @param index -> índice onde o elemento será adicionado.
+     * @param v -> valor a ser adicionado.
+     * @throws IndexOutOfBoundsException caso o índice seja inválido.
+     */
     public void add(int index, int v) {
         if (index < 0 || index >= this.size()) throw new IndexOutOfBoundsException();
 
@@ -65,16 +87,33 @@ public class LinkedList {
         }
     }
 
+    /**
+     * Retorna o primeiro elemento da lista.
+     * @return o valor do primeiro elemento.
+     * @throws NoSuchElementException caso a lista esteja vazia.
+     */
     public int getFirst() {
         if (isEmpty()) throw new NoSuchElementException();
         return this.head.value;
     }
 
+    /**
+     * Retorna o último elemento da lista.
+     * @return o valor do último elemento.
+     * @throws NoSuchElementException caso a lista esteja vazia.
+     */
     public int getLast() {
         if (isEmpty()) throw new NoSuchElementException();
         return this.tail.value;
     }
 
+    /**
+     * Retorna o elemento de um índice específico da lista.
+     * @param index -> índice do elemento a ser retornado.
+     * @return o valor do elemento no índice especificado.
+     * @throws IndexOutOfBoundsException caso o índice seja inválido.
+     * @throws NoSuchElementException caso a lista esteja vazia.
+     */
     public int get(int index) {
         if (index < 0 || index >= this.size()) throw new IndexOutOfBoundsException();
         if (isEmpty()) throw new NoSuchElementException();
@@ -90,6 +129,11 @@ public class LinkedList {
         return -1;
     }
 
+    /**
+     * Remove o primeiro elemento da lista.
+     * @return o valor do elemento removido.
+     * @throws NoSuchElementException caso a lista esteja vazia.
+     */
     public int removeFirst() {
         if (isEmpty()) throw new NoSuchElementException();
 
@@ -101,6 +145,11 @@ public class LinkedList {
         return retorno;
     }
 
+    /**
+     * Remove o último elemento da lista.
+     * @return o valor do elemento removido.
+     * @throws NoSuchElementException caso a lista esteja vazia.
+     */
     public int removeLast() {
         if (isEmpty()) throw new NoSuchElementException();
 
@@ -112,6 +161,13 @@ public class LinkedList {
         return retorno;
     }
 
+    /**
+     * Remove o elemento de um índice específico da lista.
+     * @param index -> índice do elemento a ser removido.
+     * @return o valor do elemento removido.
+     * @throws IndexOutOfBoundsException caso o índice seja inválido.
+     * @throws NoSuchElementException caso a lista esteja vazia.
+     */
     public int remove(int index) {
         if (index < 0 || index >= this.size()) throw new IndexOutOfBoundsException();
         if (isEmpty()) throw new NoSuchElementException();
@@ -131,6 +187,12 @@ public class LinkedList {
         }
     }
 
+    /**
+     * Remove o elemento com um valor específico da lista.
+     * @param v -> valor do elemento a ser removido.
+     * @return true se o elemento foi removido, false caso contrário.
+     * @throws NoSuchElementException caso a lista esteja vazia.
+     */
     public boolean removeByValue(int v) {
         if (isEmpty()) throw new NoSuchElementException();
 
@@ -159,10 +221,16 @@ public class LinkedList {
         }
     }
 
+    /**
+     * Retorna a primeira ocorrência de um elemento em específico da lista.
+     * @param v -> valor do elemento a ser analisado.
+     * @return o índice do elemento, ou -1 se não encontrado.
+     * @throws NoSuchElementException caso a lista esteja vazia.
+     */
     public int indexOf(int v) {
         if (isEmpty()) throw new NoSuchElementException();
 
-        Node aux = this.tail;
+        Node aux = this.head;
         for (int i = 0; i < this.size; i++) {
             if (aux.value == v) return i;
             aux = aux.next;
@@ -171,6 +239,12 @@ public class LinkedList {
         return -1;
     }
 
+    /**
+     * Verifica se um elemento específico está presente na lista.
+     * @param v -> valor do elemento a ser verificado.
+     * @return true se o elemento estiver presente, false caso contrário.
+     * @throws NoSuchElementException caso a lista esteja vazia.
+     */
     public boolean contains(int v) {
         if (isEmpty()) throw new NoSuchElementException();
 
@@ -183,6 +257,12 @@ public class LinkedList {
         return false;
     }
 
+    /**
+     * Retorna a última ocorrência de um elemento em específico da lista.
+     * @param v -> valor do elemento a ser analisado.
+     * @return o índice do elemento, ou -1 se não encontrado.
+     * @throws NoSuchElementException caso a lista esteja vazia.
+     */
     public int lastIndexOf(int v) {
         if (isEmpty()) throw new NoSuchElementException();
 
@@ -195,6 +275,9 @@ public class LinkedList {
         return -1;
     }
 
+    /**
+     * @return uma representação em string da lista.
+     */
     public String toString() {
         String retorno = "";
         Node aux = this.head;
@@ -206,6 +289,9 @@ public class LinkedList {
         return retorno.equals("") ? retorno : retorno.substring(0, retorno.length() - 2);
     }
 
+    /**
+     * @return o número de elementos na lista.
+     */
     public int size() {
         return this.size;
     }
